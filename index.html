@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <title>Hotel Management - Relational Model</title>
+</head>
+<body>
+    <h2>Hotel Management System - Relational Diagram</h2>
+    <div class="mermaid">
+        erDiagram
+            HOTEL ||--o{ ROOM : "has"
+            ROOM ||--o{ RESERVATION : "booked for"
+            CLIENT ||--o{ RESERVATION : "makes"
+            
+            HOTEL {
+                int Hotel_ID PK
+                string Name
+                string Address
+                string Phone_Number
+            }
+            ROOM {
+                int Room_ID PK
+                int Room_Number
+                string Type
+                float Price
+                int Hotel_ID FK
+            }
+            CLIENT {
+                int Client_ID PK
+                string First_Name
+                string Last_Name
+                string Address
+                string Phone_Number
+            }
+            RESERVATION {
+                int Reservation_ID PK
+                date Check_In_Date
+                date Check_Out_Date
+                int Client_ID FK
+                int Room_ID FK
+            }
+    </div>
+</body>
+</html>
