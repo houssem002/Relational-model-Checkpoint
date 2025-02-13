@@ -19,6 +19,10 @@
         th {
             background-color: #f2f2f2;
         }
+        .relationship {
+            font-weight: bold;
+            color: blue;
+        }
     </style>
 </head>
 <body>
@@ -41,23 +45,22 @@
     
     <h3>Room</h3>
     <table>
-        <tr><th>Room_Id (PK)</th><th>Floor</th><th>Category_Id (FK)</th></tr>
+        <tr><th>Room_Id (PK)</th><th>Floor</th><th>Category_Id (FK) → <span class="relationship">References Category</span></th></tr>
     </table>
     
     <h3>Employee</h3>
     <table>
-        <tr><th>Employee_Id (PK)</th><th>Employee_Name</th><th>Employee_Speciality</th><th>Hotel_Id (FK)</th></tr>
+        <tr><th>Employee_Id (PK)</th><th>Employee_Name</th><th>Employee_Speciality</th><th>Hotel_Id (FK) → <span class="relationship">References Hotel</span></th></tr>
     </table>
     
     <h3>Manager</h3>
     <table>
-        <tr><th>Employee_Id (PK, FK)</th></tr>
+        <tr><th>Employee_Id (PK, FK) → <span class="relationship">References Employee</span></th></tr>
     </table>
     
-    <h3>Leads</h3>
+    <h3>Leads (Supervision Relationship)</h3>
     <table>
-        <tr><th>Manager_Id (FK)</th><th>Employee_Id (FK)</th></tr>
+        <tr><th>Manager_Id (FK) → <span class="relationship">References Manager</span></th><th>Employee_Id (FK) → <span class="relationship">References Employee</span></th></tr>
     </table>
 </body>
 </html>
-
