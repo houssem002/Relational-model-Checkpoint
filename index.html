@@ -1,49 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true });
-    </script>
-    <title>Hotel Management - Relational Model</title>
+    <title>Relational Database Schema</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <h2>Hotel Management System - Relational Diagram</h2>
-    <div class="mermaid">
-        erDiagram
-            HOTEL ||--o{ ROOM : "has"
-            ROOM ||--o{ RESERVATION : "booked for"
-            CLIENT ||--o{ RESERVATION : "makes"
-            
-            HOTEL {
-                int Hotel_ID PK
-                string Name
-                string Address
-                string Phone_Number
-            }
-            ROOM {
-                int Room_ID PK
-                int Room_Number
-                string Type
-                float Price
-                int Hotel_ID FK
-            }
-            CLIENT {
-                int Client_ID PK
-                string First_Name
-                string Last_Name
-                string Address
-                string Phone_Number
-            }
-            RESERVATION {
-                int Reservation_ID PK
-                date Check_In_Date
-                date Check_Out_Date
-                int Client_ID FK
-                int Room_ID FK
-            }
-    </div>
+    <h2>Relational Database Schema</h2>
+    
+    <h3>Hotel</h3>
+    <table>
+        <tr><th>Hotel_Id (PK)</th><th>Hotel_Name</th></tr>
+    </table>
+    
+    <h3>Type</h3>
+    <table>
+        <tr><th>Type_Id (PK)</th><th>Type_Name</th></tr>
+    </table>
+    
+    <h3>Category</h3>
+    <table>
+        <tr><th>Category_Id (PK)</th><th>Category_Name</th><th>Price</th><th>Beds_Numbers</th></tr>
+    </table>
+    
+    <h3>Room</h3>
+    <table>
+        <tr><th>Room_Id (PK)</th><th>Floor</th><th>Category_Id (FK)</th></tr>
+    </table>
+    
+    <h3>Employee</h3>
+    <table>
+        <tr><th>Employee_Id (PK)</th><th>Employee_Name</th><th>Employee_Speciality</th><th>Hotel_Id (FK)</th></tr>
+    </table>
+    
+    <h3>Manager</h3>
+    <table>
+        <tr><th>Employee_Id (PK, FK)</th></tr>
+    </table>
+    
+    <h3>Leads</h3>
+    <table>
+        <tr><th>Manager_Id (FK)</th><th>Employee_Id (FK)</th></tr>
+    </table>
 </body>
 </html>
+
